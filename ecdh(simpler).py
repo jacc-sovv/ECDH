@@ -11,15 +11,15 @@ alicePubKey = alicePrivKey * curve.g        # QA = da * G
 print("Alice public key:", compress(alicePubKey))
 
 bobPrivKey = secrets.randbelow(curve.field.n)   #r
-bobPubKey = bobPrivKey * curve.g            #R * G
+bobPubKey = bobPrivKey * curve.g            #R= r * G
 print("Bob public key:", compress(bobPubKey))
 
 print("Now exchange the public keys (e.g. through Internet)")
 
-aliceSharedKey = alicePrivKey * bobPubKey       #mathematically equal to r * QA
+aliceSharedKey = alicePrivKey * bobPubKey       #mathematically equal to S = r * QA
 print("Alice shared key:", compress(aliceSharedKey))
 
-bobSharedKey = bobPrivKey * alicePubKey     #r * QA
+bobSharedKey = bobPrivKey * alicePubKey     #S = r * QA
 print("Bob shared key:", compress(bobSharedKey))
 
 print("Equal shared keys:", aliceSharedKey == bobSharedKey)
